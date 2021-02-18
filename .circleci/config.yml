@@ -1,28 +1,7 @@
-version: 2
-jobs:
-  welcome/run:
-    docker:
-    - image: circleci/welcome-config-image:0.2.1
-    steps:
-    - run:
-        command: welcome_message.sh
-        name: Congratulations!
-    - run:
-        command: next_steps.sh
-        name: Next Steps
-    - run:
-        command: examples.sh
-        name: 'Help Topic: Examples - Tutorials, Sample Configs, Cookbook'
-    - run:
-        command: concepts.sh
-        name: 'Help Topic: Overview and Concepts'
-    - run:
-        command: using_the_cli.sh
-        name: 'Help Topic: Using the CLI'
-    environment:
-    - CIRCLE_COMPARE_URL: https://github.com/agung099/docker-install/compare/a6971abf4ef9548d4065dd319b2d3ca809627850...a163b8a5b0aa80697cff41cc8eef2150283b4480
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
 workflows:
-  welcome:
+  node-tests:
     jobs:
-    - welcome/run
-  version: 2
+      - node/test
